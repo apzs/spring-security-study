@@ -1,10 +1,10 @@
 package com.itheima.session.interceptor;
 
 import com.itheima.session.entity.UserEntity;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -27,7 +27,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return false;
         }
         // 如果访问 /r/r2 必须要有p2权限
-        if(requestURI.contains("/r/r2") && userEntity.getAuthorities().contains("p2")){
+        if(requestURI.contains("/r/r2") && !userEntity.getAuthorities().contains("p2")){
             writeContent(response,"没有访问r2的权限");
             return false;
         }

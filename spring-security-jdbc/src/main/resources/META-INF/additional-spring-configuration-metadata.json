@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "server.servlet.session.http‐only",
+      "type": "java.lang.String",
+      "description": "Description for server.servlet.session.http‐only."
+  }
+] }

@@ -22,7 +22,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         // 根据用户名查找数据库中的用户信息
         UserEntity userDto = userDao.getUserEntity(vo.getUsername());
         //如果没有查到用户 或 密码与查到到密码不一致 则证明登陆失败
-        if (userDto == null || vo.getPassword().equals(userDto.getPassword())){
+        if (userDto == null || !vo.getPassword().equals(userDto.getPassword())){
             throw new RuntimeException("账号或密码错误");
         }
         // 返回用户信息
